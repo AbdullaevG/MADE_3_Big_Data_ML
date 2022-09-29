@@ -1,0 +1,53 @@
+01.	docker exec -it namenode bash
+02. 	cd /tmp
+03. hdfs dfsadmin -safemode leave
+
+04. Создайте папку в корневой HDFS-папке
+	hdfs dfs -mkdir folder_1
+
+05. Создайте в созданной папке новую вложенную папку
+	hdfs dfs -mkdir folder_1/subfolder_1
+
+06. Что такое Trash в распределенной FS? Как сделать так, чтобы файлы удалялись сразу, минуя “Trash”?
+	hdfs dfs -rm -skipTrash "filename"
+
+07. Создайте пустой файл в подпапке из пункта 2
+	hdfs dfs -touchz folder_1/subfolder_1/empty_file
+
+08. Удалите созданный файл.
+	hdfs dfs -rm -skipTrash folder_1/subfolder_1/empty_file
+
+09. Удалите созданные папки.
+	hdfs dfs -rm -r -skipTrash folder_1
+
+10. Скопируйте любой в новую папку на HDFS
+	echo "Hello world" -> file_1
+    	hdfs dfs -put file_1
+
+11. Выведите содержимое HDFS-файла на экран
+	hdfs dfs -cat file_1
+
+12. Выведите содержимое нескольких последних строчек HDFS-файла на экран.
+	hdfs dfs -tail file_1
+
+13. Выведите содержимое нескольких первых строчек HDFS-файла на экран.
+	hdfs dfs -head file_1
+
+14. Переместите копию файла в HDFS на новую локацию.
+	hdfs dfs -mkdir folder_1
+    	hdfs dfs -cp file_1 folder_1/file_1_copy
+
+15. Изменить replication factor для файла. Как долго занимает время на увеличение /
+    уменьшение числа реплик для файла?
+	hdfs dfs -setrep -w 2 file_1
+    	hdfs dfs -setrep -w 3 file_1
+        (В обоих случаях изменение числа репликаций заняло несколько секунд)
+
+17. Найдите информацию по файлу, блокам и их расположениям с помощью “hdfs fsck”
+	hdfs fsck file_1 -files -blocks -locations
+
+18. Получите информацию по любому блоку из п.2 с помощью "hdfs fsck -blockId”.
+    Обратите внимание на Generation Stamp (GS number).
+	hdfs fsck -blockId blk_1073741830
+
+ 
