@@ -1,0 +1,7 @@
+MAE_score on the fold 0 is: 2.2126544867056346
+MAE_score on the fold 1 is: 2.1516273577591662
+MAE_score on the fold 2 is: 1.1873654141464218
+MAE_score on the fold 3 is: 1.9322418302017743
+MAE_score on the fold 4 is: 1.790773747371057
+
+MAE on test: 1.7947419010225387
